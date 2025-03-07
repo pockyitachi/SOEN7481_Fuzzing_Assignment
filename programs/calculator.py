@@ -10,7 +10,8 @@ def safe_eval(expr):
             ast.Sub: operator.sub,
             ast.Mult: operator.mul,
             ast.Div: operator.truediv,
-            ast.Mod: operator.mod  # Add modulo support
+            ast.Mod: operator.mod, # Add modulo support
+            ast.Pow: operator.pow
         }
 
         # Parse expression
