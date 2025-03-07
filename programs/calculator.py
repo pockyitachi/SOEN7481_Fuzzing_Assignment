@@ -32,7 +32,7 @@ def safe_eval(expr):
         return eval_node(node.body)
 
     except Exception as e:
-        return f"Error: {e}"
+        return f"Invalid Expression, Error: {e}"
 
 
 if __name__ == "__main__":
