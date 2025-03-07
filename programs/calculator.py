@@ -26,17 +26,17 @@ def safe_eval(expr):
             elif isinstance(node, ast.Constant):  # Use ast.Constant instead of ast.Num
                 return node.value
             else:
-                raise ValueError("Unsupported operation")
+                raise ValueError("Unsupported operation_conflict_expected")
 
         return eval_node(node.body)
 
     except Exception as e:
-        return f"Error: {e}"
+        return f"Error_conflict_expected: {e}"
 
 
 if __name__ == "__main__":
     while True:
-        expr = input("Enter an expression (or 'exit' to quit): ")
+        expr = input("Enter an expression (or 'exit' to quit): _conflict_expected")
         if expr.lower() == 'exit':
             break
         print(safe_eval(expr))
