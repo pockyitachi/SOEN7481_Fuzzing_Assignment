@@ -4,14 +4,12 @@ import operator
 
 def safe_eval(expr):
     try:
-        # Define allowed operators, including modulo
+        # Define allowed operators, but remove modulo and power
         operators = {
             ast.Add: operator.add,
             ast.Sub: operator.sub,
             ast.Mult: operator.mul,
-            ast.Div: operator.truediv,
-            ast.Mod: operator.mod, # Add modulo support
-            ast.Pow: operator.pow
+            ast.Div: operator.truediv
         }
 
         # Parse expression
@@ -28,7 +26,7 @@ def safe_eval(expr):
             elif isinstance(node, ast.Constant):  # Use ast.Constant instead of ast.Num
                 return node.value
             else:
-                raise ValueError(f"Unsupported operation: {type(node)}")
+                raise ValueError("Unsupported operation")
 
         return eval_node(node.body)
 
@@ -37,5 +35,8 @@ def safe_eval(expr):
 
 
 if __name__ == "__main__":
-    expr = input("Enter an expression: ")
-    print(safe_eval(expr))
+    while True:
+        expr = input("Enter an expression (or 'exit' to quit): ")
+        if expr.lower() == 'exit':
+            break
+        print(safe_eval(expr))
